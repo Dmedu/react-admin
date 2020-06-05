@@ -7,12 +7,12 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-04 17:13:30
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-04 17:45:24
+ * @LastEditTime: 2020-06-05 17:04:19
  */ 
 import {
-  SWITCH_LOCALE
+  SET_LOCALE
 } from './actionType/Internationalization'
-export const switchlocale = (locale) => ({
-  type:SWITCH_LOCALE,
+export const setlocale = (locale) => ({
+  type:SET_LOCALE,
   locale
 })

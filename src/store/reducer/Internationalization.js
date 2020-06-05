@@ -7,16 +7,17 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-04 17:14:10
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-04 18:25:27
+ * @LastEditTime: 2020-06-05 17:07:24
  */ 
-import { SWITCH_LOCALE } from '../action/actionType/Internationalization'
+import { SET_LOCALE } from '../action/actionType/Internationalization'
+
 // 默认英文
 const defaultState = {
   locale:'en_US'
 }
-export default internationalization = (state = defaultState,action) => {
+const internationalization = (state = defaultState,action) => {
   switch(action.type){
-    case SWITCH_LOCALE:
+    case SET_LOCALE:
       return {
         locale:action.locale
       }
@@ -24,3 +25,4 @@ export default internationalization = (state = defaultState,action) => {
       return state
   }
 }
+export default internationalization
