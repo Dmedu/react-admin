@@ -7,10 +7,10 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-05 18:30:26
+ * @LastEditTime: 2020-06-06 16:39:33
  */
 import React, { useState } from 'react';
-import './App.css'
+import './App.less'
 import {
   Button,
   ConfigProvider,
