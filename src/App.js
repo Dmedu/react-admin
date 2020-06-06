@@ -7,32 +7,40 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-06 16:39:33
+ * @LastEditTime: 2020-06-06 18:36:34
  */
 import React, { useState } from 'react';
-import './App.less'
 import {
   Button,
   ConfigProvider,
   Pagination
 } from 'antd';
+import { Provider } from 'react-redux'
+// 设置语言
 import { setlocale } from './Internationalization/index'
+// react-redux
 import Store from './store'
+
 import Avatar from './components/Avatar'
+import './App.less'
+
 const App = () => {
-  const [ locale, settinglocale ] = useState(setlocale('enUS'))
-  console.log(locale)
+
+  const [locale, settinglocale] = useState(setlocale('enUS'))
+  
   return (
-    <ConfigProvider locale={locale} store={Store}>
-      <div className="App">
-        <header className="App-header">
-          <Button type="primary" onClick={()=>settinglocale(setlocale('enUS'))}>english</Button>
-          <Button type="primary" onClick={()=>settinglocale(setlocale('zhCN'))}>中文</Button>
-          <div>现在语言是：{locale.languagePack.language}</div>
-          <Pagination defaultCurrent={1} total={50} showSizeChanger />
-          <Avatar/>
-        </header>
-      </div>
+    <ConfigProvider locale={locale}>
+      <Provider store={Store}>
+        <div className="App">
+          <header className="App-header">
+            <Button type="primary" onClick={() => settinglocale(setlocale('enUS'))}>english</Button>
+            <Button type="primary" onClick={() => settinglocale(setlocale('zhCN'))}>中文</Button>
+            <div>现在语言是：{locale.languagePack.language}</div>
+            <Pagination defaultCurrent={1} total={50} showSizeChanger />
+            <Avatar />
+          </header>
+        </div>
+      </Provider>
     </ConfigProvider>
   )
 }

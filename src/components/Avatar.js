@@ -7,12 +7,24 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-05 16:09:06
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-05 16:12:04
+ * @LastEditTime: 2020-06-06 18:32:36
  */ 
 import React from 'react'
-const Avatar = (props) => {
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => {
+    console.log(state)
+}
+
+const mapDispatchToProps  = dispatch => {
+    
+}
+
+let Avatar = (props) => {
     console.log(props)
     return <div>123</div>
 }
+
+Avatar = connect(mapStateToProps,mapDispatchToProps)(Avatar)
 
 export default Avatar
