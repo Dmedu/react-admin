@@ -1,7 +1,10 @@
 ## react-admin
 react后台管理系统解决方案。
 
-## 功能模块
+- 首页：[https://github.com/Dmedu/react-admin](https://github.com/Dmedu/react-admin)
+- 预览：[https://github.com/Dmedu/react-admin](https://github.com/Dmedu/react-admin)
+
+## 特性
 
 ### 主题管理
 
@@ -128,8 +131,74 @@ export const setlocale = (locale) => {
 ```
 ### 权限管理
 
+开发中...
 
-## 
+## 目录模板
+
+```js
++-- build/                                  ---打包的文件目录
++-- config/                                 ---npm run eject 后的配置文件目录
++-- node_modules/                           ---npm下载文件目录
++-- public/
+|   --- index.html							---首页入口html文件
+|   --- npm.json							---echarts测试数据
+|   --- weibo.json							---echarts测试数据
++-- src/                                    ---核心代码目录
+|   +-- api                                 ---Api目录
+|   |    --- index.js
+|   +-- assets                              ---静态资源文件
+|   +-- components                          ---组件
+|   |    +-- Authorized                      ---权限
+|   |    |    --- ...
+|   |    +-- charts                         ---图表组件
+|   |    |    --- ...
+|   |    +-- dashboard                      ---首页组件
+|   |    |    --- ...
+|   |    +-- forms                          ---表单组件
+|   |    |    --- ...
+|   |    +-- pages                          ---页面组件
+|   |    |    --- ...
+|   |    +-- tables                         ---表格组件
+|   |    |    --- ...
+|   |    +-- ui                             ---ui组件
+|   |    |    --- ...
+|   |    --- BreadcrumbCustom.jsx           ---面包屑组件
+|   |    --- HeaderCustom.jsx               ---顶部导航组件
+|   |    --- Page.jsx                       ---页面容器
+|   |    --- SiderCustom.jsx                ---左边菜单组件
+|   +-- Internationalization                ---国际化
+|   +-- pages                               ---页面
+|   +-- routes                              ---路由配置
+|   +-- store                               ---状态机
+|   +-- theme                               ---主题管理
+|   +-- utils                               ---工具类
+|   --- App.js                              ---组件入口文件
+|   --- index.js                            ---项目的整体js入口文件，包括路由配置等
+--- .env                                    ---启动项目自定义端口配置文件
+--- .eslintrc                               ---自定义eslint配置文件，包括增加的react jsx语法限制
+--- package.json
+```
+
+## 使用
+
+```js
+git clone git@github.com:Dmedu/react-admin.git
+cd react-admin
+npm install
+npm start
+```
+## 更新日志
+
+### 0.1.0(bate)
+
+`2020-06-07`
+
+react-admin第一个版本。
+
+- 提供
+- - 国际化
+- - 定制主题
+- - 用户权限管理
 
 ## 作者
 
