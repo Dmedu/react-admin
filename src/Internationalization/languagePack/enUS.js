@@ -7,9 +7,9 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-05 16:58:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-05 17:27:58
+ * @LastEditTime: 2020-06-07 21:42:27
  */ 
 const otherEnUSPack = {
-  language:"english"
+  language:"U.S. English"
 }
 export default otherEnUSPack

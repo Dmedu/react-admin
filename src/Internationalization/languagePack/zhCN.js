@@ -10,6 +10,6 @@
  * @LastEditTime: 2020-06-05 17:27:20
  */ 
 const otherZhCNPack = {
-  language:"中文"
+  language:"中文简体"
 }
 export default otherZhCNPack
