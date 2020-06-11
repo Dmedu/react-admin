@@ -7,8 +7,9 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:42:13
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-07 19:01:14
+ * @LastEditTime: 2020-06-11 12:25:31
  */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Result } from 'antd'
 import CheckPermissions from './CheckPermissions'

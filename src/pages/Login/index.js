@@ -7,10 +7,11 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:28:14
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-07 16:31:31
+ * @LastEditTime: 2020-06-11 16:24:20
  */ 
-
- const Login = () => {
+import React from 'react'
+ const Login = (props) => {
+   console.log(props)
     return (
       <div>登录</div>
     )

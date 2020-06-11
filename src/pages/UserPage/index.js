@@ -7,9 +7,11 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:37:29
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-07 16:37:43
+ * @LastEditTime: 2020-06-11 16:23:07
  */ 
-const UserPage = () => {
+import React from 'react'
+const UserPage = (props) => {
+  console.log('用户')
   return (
     <div>普通用户权限</div>
   )

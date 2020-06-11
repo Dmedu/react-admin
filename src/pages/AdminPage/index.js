@@ -7,8 +7,9 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:38:29
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-07 16:38:45
+ * @LastEditTime: 2020-06-11 13:35:46
  */ 
+import React from 'react'
 const AdminPage = () => {
   return (
     <div>管理员权限</div>

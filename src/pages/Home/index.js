@@ -9,6 +9,7 @@
  * @LastEditors: Ethan Zhang
  * @LastEditTime: 2020-06-07 16:38:11
  */ 
+import React from 'react'
 const Home = () => {
   return (
     <div>首页</div>

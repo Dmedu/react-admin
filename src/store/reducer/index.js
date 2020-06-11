@@ -7,11 +7,13 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-04 18:20:48
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-05 16:16:49
+ * @LastEditTime: 2020-06-11 15:42:10
  */ 
 import { combineReducers } from 'redux'
 import internationalization from './Internationalization'
+import login from './login'
 const reactAdminReducers = combineReducers({
-  internationalization
+  internationalization,
+  login
 })
 export default reactAdminReducers
