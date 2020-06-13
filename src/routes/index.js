@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 布局
  * @version: v1.0.0
  * @Author: Ethan Zhang
  * @Email: 610558983@qq.com
@@ -7,45 +7,44 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 11:54:20
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-11 18:31:38
+ * @LastEditTime: 2020-06-13 16:49:11
  */
 import React from 'react'
 import {
   BrowserRouter,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom'
-import Security from '../utils/Security'
+
 import routeConfig from './router.config'
 
-const Router = () => {
+const Layout = () => {
   return (
     <BrowserRouter>
       {
         routeConfig.map((item, index) => {
-          console.log(item)
-          const { 
+          
+          const {
             path,
             component:Component,
-            routes,
+            routers,
             ...rest
           } = item
+
           return (
-            <Security key={`SecurityLayout_${index}`}>
               <Route
+                key={`Layout_${index}`}
                 path={path}
-                render={(props) => (
-                  Component ? <Component {...props} routes={routes} />
-                    : <Redirect to={'../pages/404'} />)
-                }
+                render={(props)=>(
+                  <Component {...props} routers={routers} />
+                )}
                 {...rest}
               />
-            </Security>
           )
+
         })
       }
     </BrowserRouter>
   )
 }
 
-export default Router
+export default Layout

@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 12:14:52
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-11 16:57:34
+ * @LastEditTime: 2020-06-13 15:43:46
  */
 import React from 'react'
 import { 
@@ -16,21 +16,21 @@ import {
 } from 'react-router-dom'
 import Authorized from './Authorized'
 import PropTypes from 'prop-types'
+
 const AuthorizedRoute = ({
   component: Component,
-  render,
   authority,
-  redirectPath,
+  userInfo,
   ...rest
 }) => {
   return (
-    <Authorized
+    <Authorized 
       authority={authority}
-      noMatch={<Route {...rest} render={()=>(<Redirect to={{ pathname: redirectPath }} />)}/>}
+      userInfo={userInfo}
     >
       <Route
-        {...rest} 
-        render={props => (Component ? <Component {...props} /> : render(props))} 
+        {...rest}
+        render={props => (Component ? <Component {...props} /> : null)} 
       />
     </Authorized>
   )

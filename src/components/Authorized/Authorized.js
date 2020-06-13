@@ -7,11 +7,12 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:42:13
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-11 12:25:31
+ * @LastEditTime: 2020-06-12 16:03:51
  */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Result } from 'antd'
+import { connect } from 'react-redux'
 import CheckPermissions from './CheckPermissions'
 
 const Authorized = ({
@@ -64,6 +65,6 @@ Authorized.propTypes = {
     PropTypes.elementType
   ])
 }
-
-
-export default Authorized
+export default connect(({ login }) => ({
+  userInfo:login.userInfo
+}))(Authorized)

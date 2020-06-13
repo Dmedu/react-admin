@@ -1,19 +1,20 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 仪表盘
  * @version: v1.0.0
  * @Author: Ethan Zhang
  * @Email: 610558983@qq.com
  * @WeChat: 610558983
  * @GitHub: https://github.com/Dmedu
- * @Date: 2020-06-07 16:38:29
+ * @Date: 2020-06-12 21:47:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-11 13:35:46
+ * @LastEditTime: 2020-06-12 21:50:08
  */ 
 import React from 'react'
-const AdminPage = () => {
+
+const Dashboard = () => {
   return (
-    <div>管理员权限</div>
+    <h1>仪表盘</h1>
   )
 }
 
-export default AdminPage
+export default Dashboard

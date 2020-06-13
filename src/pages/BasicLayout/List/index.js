@@ -1,20 +1,20 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 列表
  * @version: v1.0.0
  * @Author: Ethan Zhang
  * @Email: 610558983@qq.com
  * @WeChat: 610558983
  * @GitHub: https://github.com/Dmedu
- * @Date: 2020-06-07 16:37:29
+ * @Date: 2020-06-12 21:47:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-11 16:23:07
+ * @LastEditTime: 2020-06-12 21:50:20
  */ 
 import React from 'react'
-const UserPage = (props) => {
-  console.log('用户')
+
+const List = () => {
   return (
-    <div>普通用户权限</div>
+    <h1>仪表盘</h1>
   )
 }
 
-export default UserPage
+export default List

@@ -131,8 +131,46 @@ export const setlocale = (locale) => {
 ```
 ### 权限管理
 
-开发中...
+- 配置路由权限
 
+可以通过路由配置的`authority`属性配置准入此路由权限
+
+```js
+path : './routes/router.config'
+
+{
+    path:'/',
+    exact:true,
+    component:BasicLayout,
+    routes:[
+      {
+        name:'管理员主页',
+        path:'/admin/admin-page',
+        component:AdminPage,
+        authority:['admin'] //配置准入权限,可以配置多个角色
+      },
+      {
+        name:'普通用户主页',
+        path:'/admin/user-page',
+        component:UserPage,
+        authority:['user']
+      }
+    ]
+}
+
+```
+- 控制菜单显示
+控制菜单显示是根据当前用户权限控制的，所以不仅要配置每一条路由的权限还需要配置`userInfo`用户对象的`currentAuthority`字段
+```js
+import 
+//例如：登录成功后将用户信息保存至redux
+import { setUserInfo } from './store/action/login'
+
+dispatch(setUserInfo({ 
+  user_id: 1,
+  currentAuthority:['admin']  //设置当前用户权限
+}))
+```
 ## 目录模板
 
 ```js
@@ -216,3 +254,16 @@ react-admin第一个版本。
 [Ethan zhang](https://dmedu.github.io/EthanZhang.me/)
 
 如果对你有帮助，给个 star 哟~~❤️❤️❤️❤️
+
+```
+                |Route1 
+                |
+                |
+                |                                 |Route4
+BrowserRouter---|Route2--|BrowserRouter--|Switch--|Route5
+                |                                 |Route6
+                |
+                |
+                |Route3
+
+```
