@@ -254,16 +254,3 @@ react-admin第一个版本。
 [Ethan zhang](https://dmedu.github.io/EthanZhang.me/)
 
 如果对你有帮助，给个 star 哟~~❤️❤️❤️❤️
-
-```
-                |Route1 
-                |
-                |
-                |                                 |Route4
-BrowserRouter---|Route2--|BrowserRouter--|Switch--|Route5
-                |                                 |Route6
-                |
-                |
-                |Route3
-
-```

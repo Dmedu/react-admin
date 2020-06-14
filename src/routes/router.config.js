@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:27:39
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-13 14:33:33
+ * @LastEditTime: 2020-06-14 16:57:22
  */
 import React from 'react'
 // 用户布局
@@ -62,13 +62,11 @@ export default [
               title: '分析',
               path: '/dashboard/analysis',
               icon: UploadOutlined,
-              authority: ['admin', 'user'],
               component: A
             },
             {
               title: '监控',
               path: '/dashboard/monitor',
-              authority: ['user'],
               component: B
             },
             {
@@ -100,6 +98,7 @@ export default [
                 {
                   title: '项目',
                   path: '/list/project',
+                  authority: ['user'],
                   component: F
                 },
                 {
@@ -116,6 +115,12 @@ export default [
           icon:MenuUnfoldOutlined,
           path:'/nav',
           component:()=> <h1>nav 1</h1>
+        },
+        {
+          title:'nav 2333',
+          icon:MenuUnfoldOutlined,
+          path:'/gg',
+          component:()=> <h1>nav 2333</h1>
         }
       ],
       otherRouter: [

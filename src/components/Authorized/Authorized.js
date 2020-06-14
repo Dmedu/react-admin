@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:42:13
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-12 16:03:51
+ * @LastEditTime: 2020-06-14 15:52:37
  */
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -65,6 +65,4 @@ Authorized.propTypes = {
     PropTypes.elementType
   ])
 }
-export default connect(({ login }) => ({
-  userInfo:login.userInfo
-}))(Authorized)
+export default Authorized

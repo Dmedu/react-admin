@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:08:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-13 14:51:23
+ * @LastEditTime: 2020-06-14 16:43:03
  */
 import React from 'react'
 import { Layout, Menu } from 'antd'
@@ -76,10 +76,11 @@ class Sidebar extends React.PureComponent {
     path,
     title,
     icon: Icon,
+    component,
     key
   }) => {
 
-    return (
+    return component && (
       <Menu.Item
         key={key}
         icon={Icon && <Icon />}
@@ -138,7 +139,23 @@ class Sidebar extends React.PureComponent {
 
 Sidebar.propTypes = {
   /**路由数组 */
-  routers: PropTypes.array
+  routers:PropTypes.arrayOf(
+    PropTypes.shape({
+      title:PropTypes.string,
+      icon:PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.element,
+        PropTypes.elementType
+      ]),
+      sub:PropTypes.array,
+      component:PropTypes.elementType,
+      path:PropTypes.string,
+      authority:PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)
+      ])
+    })
+  ).isRequired
 }
 
 export default Sidebar

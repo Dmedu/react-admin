@@ -5,6 +5,8 @@
  * @param { Element } target 准入组件
  * @param { Element } Exception 不准组件
  * @return: { Element }
+ * 有权限返回子组件
+ * 没有权限返回不准入组件
  */
 
 const CheckPermissions = (

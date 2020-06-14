@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-13 14:59:10
+ * @LastEditTime: 2020-06-14 17:07:49
  */ 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,7 +19,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-      <Provider store={Store}>
+      <Provider store={Store} >
         <App/>
       </Provider>
   </React.StrictMode>,

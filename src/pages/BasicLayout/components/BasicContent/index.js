@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 基本布局-内容
+ * @Descripttion: 基本布局-content
  * @version: v1.0.0
  * @Author: Ethan Zhang
  * @Email: 610558983@qq.com
@@ -7,51 +7,50 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:26:53
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-13 16:32:43
+ * @LastEditTime: 2020-06-14 16:56:06
  */
 import React from 'react'
 import { Layout } from 'antd'
-import { Switch,Route,BrowserRouter } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 import AuthorizedRoute from '../../../../components/Authorized/AuthorizedRoute'
 
 import './BasicContent.less'
 
-const { Content } = Layout;
+const { Content } = Layout
 
-const K = () => <h1>K</h1>
-const L = () => <h1>L</h1>
-const renderRoute = (routers) => {
-  return <Route path={'/nav'} component={K} />
-  // return routers.map((item,index) => {
-  //   const { sub,path,component:Component } = item
-  //   sub ? console.log(1) : console.log(item)
-  //   return sub ? renderRoute(sub) : <Route
-  //   path={path}
-  //   component={<Component/>}
-  // />
-    // return sub ? renderRoute(sub) :
-    // <AuthorizedRoute
-    //   key={`BasicLayout_Content-Router-${index}`}
-    //   component={item.component}
-    //   path={item.path}
-    //   authority={item.authority}
-    // />
+class BasicContent extends React.Component {
+
+  renderRoute = (routers) => {
+    const { userInfo } = this.props
+    return routers.map((item, index) => {
+      const {
+        sub,
+        title,
+        ...rest
+      } = item
+      let key = `BasicLayout_Content-Router-${title}-${index}`
+      return sub ? this.renderRoute(sub) :
+        <AuthorizedRoute
+          key={key}
+          userInfo={userInfo}
+          {...rest}
+        />
+    })
+  }
+
+  render() {
+    const { routers } = this.props
+    return (
+      <Content className="content-layout-background">
+        <Switch>
+          {this.renderRoute(routers)}
+        </Switch>
+      </Content>
+    )
+  }
 
 }
-
-const BasicContent = ({
-  routers,
-  ...rest
-}) => {
-
-  return (
-    <Content className="content-layout-background">
-      {/* <Switch> */}
-        <Route path={'/nav'} component={K} />
-        <Route path={'/list/query'} component={L} />
-      {/* </Switch> */}
-    </Content>
-  )
-}
-
-export default BasicContent
+export default connect(({ login }) => ({
+  userInfo: login.userInfo
+}))(BasicContent)
