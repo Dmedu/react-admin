@@ -7,30 +7,19 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:08:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 16:43:03
+ * @LastEditTime: 2020-06-14 18:55:51
  */
 import React from 'react'
 import { Layout, Menu } from 'antd'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import './Sidebar.less'
 
 const { SubMenu } = Menu
 
 class Sidebar extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      collapsed: false
-    }
-  }
-
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    })
-  }
 
   renderSubMenu = ({
     sub: subRouters,
@@ -91,9 +80,9 @@ class Sidebar extends React.PureComponent {
   }
 
   render() {
-
-    const { routers } = this.props
-    const { collapsed } = this.state
+    
+    const { routers, responsiveLayout } = this.props
+    const { collapsed } = responsiveLayout.sidebar
     
     return (
       <Layout.Sider
@@ -158,4 +147,6 @@ Sidebar.propTypes = {
   ).isRequired
 }
 
-export default Sidebar
+export default connect(({ responsiveLayout })=>({
+  responsiveLayout
+}))(Sidebar)
