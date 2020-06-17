@@ -7,9 +7,9 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 13:59:43
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-11 17:17:56
+ * @LastEditTime: 2020-06-17 19:13:15
  */
-import { SET_USER_INFO } from '../action/actionType/login'
+import { SET_USER_INFO, SIGN_OUT } from '../action/actionType/login'
 
 const defaultState = {
   loginState: false,
@@ -23,6 +23,8 @@ const setUserInfo = (state = defaultState, action) => {
         loginState: true,
         userInfo: action.userInfo
       }
+    case SIGN_OUT:
+      return defaultState
     default:
       return state
   }

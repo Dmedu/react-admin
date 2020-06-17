@@ -7,15 +7,19 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:26:53
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 14:20:07
+ * @LastEditTime: 2020-06-17 19:43:42
  */
 import React from 'react'
 import { Layout } from 'antd'
-import { Switch,withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { 
+  Switch,
+  withRouter
+} from 'react-router-dom'
 import { connect } from 'react-redux'
 import AuthorizedRoute from '../../../../components/Authorized/AuthorizedRoute'
 
-import './BasicContent.less'
+import './Content.less'
 
 const { Content } = Layout
 
@@ -23,18 +27,22 @@ class BasicContent extends React.Component {
 
   renderRoute = (routers) => {
 
-    const { userInfo } = this.props
-    const { path:parentPath } = this.props.match
-    console.log(this.props)
+    const { 
+      userInfo,
+      match
+    } = this.props
+    const { path: parentPath } = match
+
     return routers.map((item, index) => {
+      
       const {
         sub,
         title,
         path,
         ...rest
       } = item
-      sub ? console.log('2333') : console.log(`${parentPath}${path}`)
       let key = `BasicLayout_Content-Router-${title}-${index}`
+
       return sub ? this.renderRoute(sub) :
         <AuthorizedRoute
           key={key}
@@ -42,6 +50,7 @@ class BasicContent extends React.Component {
           path={`${parentPath}${path}`}
           {...rest}
         />
+
     })
   }
 
@@ -59,6 +68,28 @@ class BasicContent extends React.Component {
   }
 
 }
+
+BasicContent.propTypes = {
+  /**路由数组 */
+  routers:PropTypes.arrayOf(
+    PropTypes.shape({
+      title:PropTypes.string,
+      icon:PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.element,
+        PropTypes.elementType
+      ]),
+      sub:PropTypes.array,
+      component:PropTypes.elementType,
+      path:PropTypes.string,
+      authority:PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)
+      ])
+    })
+  ).isRequired
+}
+
 export default connect(({ login }) => ({
   userInfo: login.userInfo
 }))(withRouter(BasicContent))

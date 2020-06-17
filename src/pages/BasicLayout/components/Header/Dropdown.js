@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-15 11:33:36
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-15 18:47:26
+ * @LastEditTime: 2020-06-17 20:00:54
  */
 import React from 'react'
 import {
@@ -26,7 +26,6 @@ const renderMenu = (menus,callBack) => {
           menuItemComponent: Component,
           ...rest
         } = item
-        console.log(item)
         return (
           <Menu.Item
             key={key}

@@ -7,59 +7,106 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-10 17:16:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 14:45:33
+ * @LastEditTime: 2020-06-17 20:12:52
  */
 import React from 'react'
-import { Layout } from 'antd'
-import { BrowserRouter, Route, useRouteMatch, Link, Switch } from 'react-router-dom'
+import { 
+  Layout,
+  Avatar
+} from 'antd'
+import { 
+  Link, 
+  useRouteMatch,
+  withRouter
+} from 'react-router-dom'
+import { connect } from 'react-redux'
+import {
+  UserOutlined,
+  SettingOutlined,
+  PoweroffOutlined
+} from '@ant-design/icons'
 import Sidebar from './components/Sidebar'
-import Content from './components/BasicContent'
-import Footer from './components/BasicFooter'
-import Header from './components/ContentHeader'
+import Content from './components/Content'
+import Footer from './components/Footer'
+import Header from './components/Header'
 import Security from '../../components/Security'
-import Dashboard from './Dashboard'
-import List from './List'
+import { signOut } from '../../store/action/login'
+
 import './index.less'
 
-const BasicLayout = ({ routers }) => {
+const PersonalDropdownTextComponent = () => (
+  <div className="option personal">
+    <Avatar
+      shape="square"
+      size="small"
+      icon={<UserOutlined />}
+    />
+    <span className="antd-pro-components-global-header-index-name username">Serati Ma</span>
+  </div>
+)
+
+const RenderLink = ({ title, path, ...rest }) => {
+  const { path:parentPath } = useRouteMatch()
+  return (
+    <Link
+      className='antd-pro-components-global-header-index-name'
+      to={`${parentPath}${path}`}
+      {...rest}
+    >
+      {title}
+    </Link>
+  )
+}
+const data = {
+  childrenComponent: <PersonalDropdownTextComponent />,
+  menus: [
+    {
+      key: 'personal-center',
+      title: '个人中心',
+      icon: UserOutlined,
+      menuItemComponent: <RenderLink title='个人中心' path='/personal-center' />,
+    },
+    {
+      key: 'personal-settings',
+      title: '个人设置',
+      icon: SettingOutlined,
+      menuItemComponent: <RenderLink title='个人设置' path='/personal-settings' />,
+    },
+    {
+      key: 'sign-out',
+      title: '退出登录',
+      icon: PoweroffOutlined,
+      menuItemComponent:<span className="antd-pro-components-global-header-index-name username">退出登录</span>
+    }
+  ]
+}
+const BasicLayout = ({ routers,dispatch,history }) => {
 
   const { menus, otherRouter } = routers
 
+  const onClickMenuItem = (e) => {
+    console.log(e)
+    if (e.key && e.key === 'sign-out') {
+      dispatch(signOut())
+      history.replace('/user/login')
+    }
+  }
+
   return (
-    <Security>
+    // <Security>
       <Layout style={{ height: '100%' }}>
         <Sidebar routers={menus} />
         <Layout>
-          <Header />
+          <Header 
+            personalDropdownData={data}
+            dropdownOnPress={(e)=>onClickMenuItem(e)}
+          />
           <Content routers={menus.concat(otherRouter)} />
           <Footer />
         </Layout>
       </Layout>
-    </Security>
+    // </Security>
   )
 }
 
-// const BasicLayout = () => {
-
-//   const { url, path } = useRouteMatch()
-//   console.log(url)
-//   console.log(path)
-//   return (
-//     <div>
-//       <div>
-//         <Link to={`${url}/dashboard`}>Dashboard</Link>
-//         <br />
-//         <Link to={`${url}/list`}>List</Link>
-//       </div>
-//       <div>
-//         <span>1234</span>
-//         <Switch>
-//           <Route path={`${path}/dashboard`} render={() => (<Dashboard />)} />
-//           <Route path={`${path}/list`} render={() => (<List />)} />
-//         </Switch>
-//       </div>
-//     </div>
-//   )
-// }
-
-export default BasicLayout
+export default connect()(withRouter(BasicLayout))

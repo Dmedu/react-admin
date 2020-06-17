@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 17:17:29import React from 'react'
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-16 17:35:39
+ * @LastEditTime: 2020-06-17 19:04:41
  */
 import React from 'react'
 import {
@@ -25,15 +25,6 @@ import { withRouter } from 'react-router-dom'
 import { setUserInfo } from '../../../store/action/login'
 
 import './login.less'
-
-const mapDispatchToProps = (dispatch,ownProps) => {
-  return {
-    onFinish: values => {
-      dispatch(setUserInfo({user_id:1,currentAuthority:['admin']}))
-      console.log(ownProps)
-    }
-  }
-}
 
 const Login = ({ dispatch,history  }) => {
   // let location = useLocation();

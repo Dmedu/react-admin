@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:08:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 14:19:19
+ * @LastEditTime: 2020-06-17 19:49:14
  */
 import React from 'react'
 import { Layout, Menu } from 'antd'
@@ -68,8 +68,9 @@ class Sidebar extends React.PureComponent {
     component,
     key
   }) => {
+
     const { url } = this.props.match
-    console.log(`${url}${path}`)
+    
     return component && (
       <Menu.Item
         key={key}
