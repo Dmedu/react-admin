@@ -7,14 +7,21 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:47:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-12 21:50:08
+ * @LastEditTime: 2020-06-16 16:44:12
  */ 
 import React from 'react'
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  // useLocation,
+  withRouter
+} from "react-router-dom"
 const Dashboard = () => {
+  // let location = useLocation();
+  // console.log(location)
   return (
-    <h1>仪表盘</h1>
+    <h1>仪表盘123</h1>
   )
 }
 
-export default Dashboard
+export default withRouter(Dashboard)

@@ -7,13 +7,20 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:47:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-12 21:50:20
+ * @LastEditTime: 2020-06-16 16:57:00
  */ 
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  useLocation
+} from "react-router-dom"
 
 const List = () => {
+  let location = useLocation();
+  console.log(location)
   return (
-    <h1>仪表盘</h1>
+    <h1>列表</h1>
   )
 }
 

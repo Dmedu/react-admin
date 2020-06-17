@@ -7,12 +7,12 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:08:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 18:55:51
+ * @LastEditTime: 2020-06-17 14:19:19
  */
 import React from 'react'
 import { Layout, Menu } from 'antd'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import './Sidebar.less'
@@ -27,7 +27,7 @@ class Sidebar extends React.PureComponent {
     icon: Icon,
     ...rest
   }) => {
-
+    
     return (
       <SubMenu
         key={key}
@@ -68,13 +68,14 @@ class Sidebar extends React.PureComponent {
     component,
     key
   }) => {
-
+    const { url } = this.props.match
+    console.log(`${url}${path}`)
     return component && (
       <Menu.Item
         key={key}
         icon={Icon && <Icon />}
       >
-        <Link to={path}>{title}</Link>
+        <Link to={`${url}${path}`}>{title}</Link>
       </Menu.Item>
     )
   }
@@ -149,4 +150,4 @@ Sidebar.propTypes = {
 
 export default connect(({ responsiveLayout })=>({
   responsiveLayout
-}))(Sidebar)
+}))(withRouter(Sidebar))

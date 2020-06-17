@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 20:47:33
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-12 20:56:30
+ * @LastEditTime: 2020-06-17 13:45:05
  */
 import React from 'react'
 import {
@@ -15,121 +15,67 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  useRouteMatch
 } from "react-router-dom"
 
-const Home = () => <h2>Home</h2>
-const About = () => <h2>About</h2>
-const Dashboard = () => <h2>Dashboard</h2>
-const News = (props) => {
-  console.log(props)
-  return <div>
+const A = () => <h1>A Component</h1>
+const B = () => <h1>B Component</h1>
+const C = () => <h1>C Component</h1>
+const D = () => <h1>D Component</h1>
+const E = () => <h1>E Component</h1>
+const F = () => <h1>F Component</h1>
+const About = () => {
+  const { path, url } = useRouteMatch()
+  return (
     <div>
       <ul>
-        <li> <Link to="/news/international">国际新闻</Link> </li>
-        <li>  <Link to="/news/military-news">军事新闻</Link>  </li>
+        <li>
+          <Link to={`${url}/d`}>D</Link>
+        </li>
+        <li>
+          <Link to={`${url}/e`}>E</Link>
+        </li>
+        <li>
+          <Link to={`${url}/f`}>F</Link>
+        </li>
       </ul>
+      <Switch>
+        <Route path={`${path}/d`} render={() => (<D />)} />
+        <Route path={`${path}/e`} render={() => (<E />)} />
+        <Route path={`${path}/f`} render={() => (<F />)} />
+      </Switch>
     </div>
-    <div>
-      {
-        props.routers.map((item, index) => {
-          const {
-            path,
-            component: Component,
-            ...rest
-          } = item
-          return <Route path={path} render={(props) => {
-            return <Component {...rest} />
-          }} {...rest} />
-        })
-      }
-    </div>
-  </div>
+  )
 }
-const Games = () => <h2>Games</h2>
+const Dashboard = () => {
+  const { path, url } = useRouteMatch()
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to={`${url}/a`}>A</Link>
+        </li>
+        <li>
+          <Link to={`${url}/b`}>B</Link>
+        </li>
+        <li>
+          <Link to={`${url}/c`}>C</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route path={`${path}/a`} render={() => (<A />)} />
+        <Route path={`${path}/b`} render={() => (<B />)} />
+        <Route path={`${path}/c`} render={() => (<C />)} />
+      </Switch>
+    </div>
+  )
+}
 
-
-const InternationalNews = () => <h2>News -> 国际新闻</h2>
-const MilitaryNews = () => <h2>News -> 军事新闻</h2>
-
-const routerConfig = [
-  {
-    path: '/',
-    component: Home,
-    exact: true
-  },
-  {
-    path: '/about',
-    component: About
-  },
-  {
-    path: '/dashboard',
-    component: Dashboard
-  },
-  {
-    path: '/news',
-    component: News,
-    routers: [
-      {
-        path: '/news/international',
-        component: InternationalNews
-      },
-      {
-        path: '/news/military-news',
-        component: MilitaryNews
-      }
-    ]
-  },
-  {
-    path: '/games',
-    component: Games
-  },
-]
-
-const TestApp = (props) => {
-  console.log('渲染')
-  console.log(props)
-  var isLogin = false
+const TestApp = () => {
   return (
     <BrowserRouter>
-      <>
-        <div>
-          <ul>
-            <li> <Link to="/">Home</Link> </li>
-            <li>  <Link to="/about">About</Link>  </li>
-            <li>  <Link to="/dashboard">Dashboard</Link> </li>
-            <li>  <Link to="/news">News</Link> </li>
-            <li>  <Link to="/games">Games</Link> </li>
-          </ul>
-          <hr />
-          <Switch>
-            {
-              routerConfig.map((item, index) => {
-                const {
-                  path,
-                  component: Component,
-                  ...rest
-                } = item
-                return <Route
-                  path={path}
-                  render={(props) => {
-                    return <Component {...props} {...rest} />
-                  }}
-                  {...rest}
-                />
-              })
-            }
-            {/* <Route exact path="/"> <Home /></Route>
-          <Route path="/about" component={About} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/news" component={News} />
-          <Route path="/games" component={Games} /> */}
-            {/* <Route path="/dashboard" children={<Dashboard />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/games" component={() => <Games />} /> */}
-          </Switch>
-        </div>
-      </>
+      <Route path="/about" render={() => (<About />)} />
+      <Route path="/dashboard" render={() => (<Dashboard />)} />
     </BrowserRouter>
   )
 }

@@ -7,44 +7,32 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 11:54:20
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-13 16:49:11
+ * @LastEditTime: 2020-06-17 14:57:01
  */
 import React from 'react'
 import {
-  BrowserRouter,
-  Route
+  Route,
+  Switch,
+  Redirect
 } from 'react-router-dom'
+
+import BasicLayout from '../pages/BasicLayout'
+import UserLayout from '../pages/UserLayout/Login'
+import Not from '../pages/404'
 
 import routeConfig from './router.config'
 
 const Layout = () => {
+
   return (
-    <BrowserRouter>
-      {
-        routeConfig.map((item, index) => {
-          
-          const {
-            path,
-            component:Component,
-            routers,
-            ...rest
-          } = item
-
-          return (
-              <Route
-                key={`Layout_${index}`}
-                path={path}
-                render={(props)=>(
-                  <Component {...props} routers={routers} />
-                )}
-                {...rest}
-              />
-          )
-
-        })
-      }
-    </BrowserRouter>
+    <Switch>
+      <Redirect exact from="/" to="/basicLayout" />
+      <Route path='/user/login' render={() => (<UserLayout />)} />
+      <Route path='/404' render={() => (<Not />)} />
+      <Route path='/basicLayout' render={() => (<BasicLayout routers={routeConfig} />)} />
+    </Switch>
   )
+
 }
 
 export default Layout

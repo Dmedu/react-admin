@@ -7,11 +7,12 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 17:07:49
+ * @LastEditTime: 2020-06-17 13:45:57
  */ 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'  
 import './index.css';
 import App from './App';
 import Store from './store'
@@ -19,9 +20,11 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-      <Provider store={Store} >
+    <BrowserRouter>
+      <Provider store={Store}>
         <App/>
       </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

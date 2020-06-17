@@ -7,11 +7,11 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:26:53
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 16:56:06
+ * @LastEditTime: 2020-06-17 14:20:07
  */
 import React from 'react'
 import { Layout } from 'antd'
-import { Switch } from 'react-router-dom'
+import { Switch,withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import AuthorizedRoute from '../../../../components/Authorized/AuthorizedRoute'
 
@@ -22,25 +22,33 @@ const { Content } = Layout
 class BasicContent extends React.Component {
 
   renderRoute = (routers) => {
+
     const { userInfo } = this.props
+    const { path:parentPath } = this.props.match
+    console.log(this.props)
     return routers.map((item, index) => {
       const {
         sub,
         title,
+        path,
         ...rest
       } = item
+      sub ? console.log('2333') : console.log(`${parentPath}${path}`)
       let key = `BasicLayout_Content-Router-${title}-${index}`
       return sub ? this.renderRoute(sub) :
         <AuthorizedRoute
           key={key}
           userInfo={userInfo}
+          path={`${parentPath}${path}`}
           {...rest}
         />
     })
   }
 
   render() {
+
     const { routers } = this.props
+
     return (
       <Content className="content-layout-background">
         <Switch>
@@ -53,4 +61,4 @@ class BasicContent extends React.Component {
 }
 export default connect(({ login }) => ({
   userInfo: login.userInfo
-}))(BasicContent)
+}))(withRouter(BasicContent))

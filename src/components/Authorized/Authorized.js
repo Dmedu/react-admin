@@ -7,12 +7,11 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:42:13
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 15:52:37
+ * @LastEditTime: 2020-06-15 18:46:23
  */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Result } from 'antd'
-import { connect } from 'react-redux'
 import CheckPermissions from './CheckPermissions'
 
 const Authorized = ({

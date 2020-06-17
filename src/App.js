@@ -7,9 +7,9 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-13 15:01:01
+ * @LastEditTime: 2020-06-17 13:07:03
  */
-import React, { useState } from 'react'
+import React from 'react'
 import { ConfigProvider } from 'antd'
 
 // 设置语言
@@ -18,6 +18,16 @@ import './App.less'
 
 import Layout from './routes/index'
 
+import Test from './Test'
+
+//test
+// const App = () => {
+//   return (
+//     <div className="App">
+//       <Test/>
+//     </div>
+//   )
+// }
 
 const App = () => {
 

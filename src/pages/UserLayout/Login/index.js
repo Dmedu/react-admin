@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 17:17:29import React from 'react'
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 16:58:28
+ * @LastEditTime: 2020-06-16 17:35:39
  */
 import React from 'react'
 import {
@@ -36,11 +36,13 @@ const mapDispatchToProps = (dispatch,ownProps) => {
 }
 
 const Login = ({ dispatch,history  }) => {
+  // let location = useLocation();
+  // console.log(location)
   const onFinish = (values) => {
     console.log('登录点击')
     console.log(history)
     dispatch(setUserInfo({user_id:1,currentAuthority:['admin']}))
-    history.push('/')
+    history.replace('/')
   }
   return (
     <div className="login">

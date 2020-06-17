@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 12:14:52
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-14 16:49:26
+ * @LastEditTime: 2020-06-17 12:47:14
  */
 import React from 'react'
 import { Route } from 'react-router-dom'
@@ -30,6 +30,7 @@ const AuthorizedRoute = ({
   ...rest
 }) => {
   console.log(userInfo)
+  console.log(rest)
   return (
     <Authorized 
       authority={authority}
