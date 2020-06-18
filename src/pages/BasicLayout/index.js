@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-10 17:16:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 20:12:52
+ * @LastEditTime: 2020-06-18 22:27:21
  */
 import React from 'react'
 import { 
@@ -15,7 +15,6 @@ import {
   Avatar
 } from 'antd'
 import { 
-  Link, 
   useRouteMatch,
   withRouter
 } from 'react-router-dom'
@@ -23,8 +22,10 @@ import { connect } from 'react-redux'
 import {
   UserOutlined,
   SettingOutlined,
-  PoweroffOutlined
+  PoweroffOutlined,
+  GlobalOutlined
 } from '@ant-design/icons'
+import Link from '../../components/Link'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import Footer from './components/Footer'
@@ -33,6 +34,16 @@ import Security from '../../components/Security'
 import { signOut } from '../../store/action/login'
 
 import './index.less'
+
+const RenderLink = ({ title, path, ...rest }) => {
+  const { path:parentPath } = useRouteMatch()
+  return (
+    <Link
+      title={title}
+      to={`${parentPath}${path}`}
+    />
+  )
+}
 
 const PersonalDropdownTextComponent = () => (
   <div className="option personal">
@@ -44,51 +55,79 @@ const PersonalDropdownTextComponent = () => (
     <span className="antd-pro-components-global-header-index-name username">Serati Ma</span>
   </div>
 )
-
-const RenderLink = ({ title, path, ...rest }) => {
-  const { path:parentPath } = useRouteMatch()
-  return (
-    <Link
-      className='antd-pro-components-global-header-index-name'
-      to={`${parentPath}${path}`}
-      {...rest}
-    >
-      {title}
-    </Link>
-  )
-}
-const data = {
+const personalData = {
   childrenComponent: <PersonalDropdownTextComponent />,
-  menus: [
-    {
-      key: 'personal-center',
-      title: '个人中心',
-      icon: UserOutlined,
-      menuItemComponent: <RenderLink title='个人中心' path='/personal-center' />,
-    },
-    {
-      key: 'personal-settings',
-      title: '个人设置',
-      icon: SettingOutlined,
-      menuItemComponent: <RenderLink title='个人设置' path='/personal-settings' />,
-    },
-    {
-      key: 'sign-out',
-      title: '退出登录',
-      icon: PoweroffOutlined,
-      menuItemComponent:<span className="antd-pro-components-global-header-index-name username">退出登录</span>
-    }
-  ]
+  menus: {
+    menuItem:[
+      {
+        key: 'personal-center',
+        title: '个人中心',
+        icon: UserOutlined,
+        menuItemComponent: <RenderLink title='个人中心' path='/personal-center' />,
+      },
+      {
+        key: 'personal-settings',
+        title: '个人设置',
+        icon: SettingOutlined,
+        menuItemComponent: <RenderLink title='个人设置' path='/personal-settings' />,
+      },
+      {
+        key: 'sign-out',
+        title: '退出登录',
+        icon: PoweroffOutlined,
+        menuItemComponent:<span className="antd-pro-components-global-header-index-name username">退出登录</span>
+      }
+    ]
+  }
 }
-const BasicLayout = ({ routers,dispatch,history }) => {
+const selectLangData = {
+  childrenComponent:<div className="option"><GlobalOutlined/></div>,
+  menus:{
+    selectedKeys:['zh_CN'],
+    menuItem:[
+      {
+        key:'zh_CN',
+        title:'简体中文',
+        menuItemComponent:<span className="antd-pro-components-global-header-index-name username">简体中文</span>
+      },
+      {
+        key:'en_US',
+        title:'English',
+        menuItemComponent:<span className="antd-pro-components-global-header-index-name username">English</span>
+      }
+    ]
+  }
+}
+const BasicLayout = ({ routers,dispatch,history,match }) => {
 
   const { menus, otherRouter } = routers
+  const { path } = match
 
-  const onClickMenuItem = (e) => {
+  const clickPersonalCenter = (e) => {
+    switch(e.key){
+      case 'sign-out':
+        dispatch(signOut())
+        history.replace('/user/login')
+        break;
+      case 'personal-center':
+        history.push(`${path}/personal-center`)
+        break;
+      case 'personal-settings':
+        history.push(`${path}/personal-settings`)
+        break;
+    }
+  }
+
+  const selectLang = (e) => {
+    console.log('选择语言')
     console.log(e)
-    if (e.key && e.key === 'sign-out') {
-      dispatch(signOut())
-      history.replace('/user/login')
+    switch(e.key){
+      case 'zh_CN':
+        
+        break;
+      case 'en_US':
+        
+        break;
     }
   }
 
@@ -98,8 +137,10 @@ const BasicLayout = ({ routers,dispatch,history }) => {
         <Sidebar routers={menus} />
         <Layout>
           <Header 
-            personalDropdownData={data}
-            dropdownOnPress={(e)=>onClickMenuItem(e)}
+            personalData={personalData}
+            personalOnPress={(e)=>clickPersonalCenter(e)}
+            selectLangData={selectLangData}
+            selectLangOnPress={(e)=>selectLang(e)}
           />
           <Content routers={menus.concat(otherRouter)} />
           <Footer />

@@ -7,12 +7,13 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:08:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 19:49:14
+ * @LastEditTime: 2020-06-18 21:49:24
  */
 import React from 'react'
 import { Layout, Menu } from 'antd'
 import PropTypes from 'prop-types'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import Link from '../../../../components/Link'
 import { connect } from 'react-redux'
 
 import './Sidebar.less'
@@ -76,7 +77,10 @@ class Sidebar extends React.PureComponent {
         key={key}
         icon={Icon && <Icon />}
       >
-        <Link to={`${url}${path}`}>{title}</Link>
+        <Link
+          title={title}
+          to={`${url}${path}`}
+        />
       </Menu.Item>
     )
   }
