@@ -7,13 +7,13 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-04 17:14:10
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-05 17:07:24
+ * @LastEditTime: 2020-06-19 00:03:20
  */ 
 import { SET_LOCALE } from '../action/actionType/Internationalization'
 
 // 默认英文
 const defaultState = {
-  locale:'en_US'
+  locale:'en'
 }
 const internationalization = (state = defaultState,action) => {
   switch(action.type){

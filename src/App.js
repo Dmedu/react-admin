@@ -7,13 +7,13 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 13:07:03
+ * @LastEditTime: 2020-06-18 23:47:07
  */
 import React from 'react'
 import { ConfigProvider } from 'antd'
 
 // 设置语言
-import { setlocale } from './Internationalization/index'
+import { setLocale } from './Internationalization'
 import './App.less'
 
 import Layout from './routes/index'
@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <ConfigProvider locale={setlocale('zhCN')}>
+      <ConfigProvider locale={setLocale('zh-cn')}>
         <Layout />
       </ConfigProvider>
     </div>

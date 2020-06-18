@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-10 17:16:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-18 22:27:21
+ * @LastEditTime: 2020-06-19 00:02:44
  */
 import React from 'react'
 import { 
@@ -25,6 +25,10 @@ import {
   PoweroffOutlined,
   GlobalOutlined
 } from '@ant-design/icons'
+import {
+  setLocale,
+  getLocale
+} from '../../Internationalization'
 import Link from '../../components/Link'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
@@ -60,7 +64,7 @@ const personalData = {
   menus: {
     menuItem:[
       {
-        key: 'personal-center',
+        key: 'personal-center', 
         title: '个人中心',
         icon: UserOutlined,
         menuItemComponent: <RenderLink title='个人中心' path='/personal-center' />,
@@ -80,29 +84,40 @@ const personalData = {
     ]
   }
 }
-const selectLangData = {
-  childrenComponent:<div className="option"><GlobalOutlined/></div>,
-  menus:{
-    selectedKeys:['zh_CN'],
-    menuItem:[
-      {
-        key:'zh_CN',
-        title:'简体中文',
-        menuItemComponent:<span className="antd-pro-components-global-header-index-name username">简体中文</span>
-      },
-      {
-        key:'en_US',
-        title:'English',
-        menuItemComponent:<span className="antd-pro-components-global-header-index-name username">English</span>
-      }
-    ]
-  }
-}
-const BasicLayout = ({ routers,dispatch,history,match }) => {
+
+const BasicLayout = ({ 
+  routers,
+  dispatch,
+  history,
+  match,
+  localeState
+}) => {
 
   const { menus, otherRouter } = routers
   const { path } = match
-
+  const { locale } = localeState
+  console.log(localeState)
+  let selectedKeys = [ locale ]
+  console.log(selectedKeys)
+  const selectLangData = {
+    childrenComponent:<div className="option"><GlobalOutlined/></div>,
+    menus:{
+      selectedKeys:selectedKeys,
+      menuItem:[
+        {
+          key:'zh-cn',
+          title:'简体中文',
+          menuItemComponent:<span className="antd-pro-components-global-header-index-name username">简体中文</span>
+        },
+        {
+          key:'en',
+          title:'English',
+          menuItemComponent:<span className="antd-pro-components-global-header-index-name username">English</span>
+        }
+      ]
+    }
+  }
+  
   const clickPersonalCenter = (e) => {
     switch(e.key){
       case 'sign-out':
@@ -117,19 +132,8 @@ const BasicLayout = ({ routers,dispatch,history,match }) => {
         break;
     }
   }
-
-  const selectLang = (e) => {
-    console.log('选择语言')
-    console.log(e)
-    switch(e.key){
-      case 'zh_CN':
-        
-        break;
-      case 'en_US':
-        
-        break;
-    }
-  }
+  
+  const selectLang = (e) => setLocale(e.key)
 
   return (
     // <Security>
@@ -150,4 +154,6 @@ const BasicLayout = ({ routers,dispatch,history,match }) => {
   )
 }
 
-export default connect()(withRouter(BasicLayout))
+export default connect(({ internationalization })=>({
+  localeState:internationalization.locale
+}))(withRouter(BasicLayout))

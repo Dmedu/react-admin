@@ -7,23 +7,40 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-05 16:55:57
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-05 17:37:25
+ * @LastEditTime: 2020-06-19 00:07:30
  */ 
 import enUS from 'antd/es/locale/en_US'
 import zhCN from 'antd/es/locale/zh_CN'
 import moment from 'moment'
+import Store from '../store'
+import { setLocaleState } from '../store/action/Internationalization'
 import 'moment/locale/zh-cn'
 
 import otherZhCN from './languagePack/zhCN'
 import otherEnUS from './languagePack/enUS'
 
-export const setlocale = (locale) => {
-  switch(locale){
-    case 'zhCN':
-      moment.locale('zh-cn')
-      return {...zhCN,languagePack:otherZhCN}
-    default:
-      moment.locale('en')
-      return {...enUS,languagePack:otherEnUS}
-  }
+const localePackage = {
+  'zh-cn':{...zhCN,languagePack:otherZhCN},
+  'en':{...enUS,languagePack:otherEnUS}
+}
+
+// export const setLocale = (locale) => {
+//   switch(locale){
+//     case 'zhCN':
+//       moment.locale('zh-cn')
+//       return localePackage[locale]
+//     default:
+//       moment.locale('en')
+//       return localePackage[locale]
+//   }
+// }
+
+export const setLocale = (locale) => {
+  console.log(locale)
+  moment.locale(locale)
+  Store.dispatch(setLocaleState(localePackage[locale]))
+}
+export const getLocale = () => {
+  const { locale } = Store.getState().internationalization
+  return locale
 }

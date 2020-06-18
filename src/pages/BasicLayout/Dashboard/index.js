@@ -7,20 +7,21 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:47:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-16 16:44:12
+ * @LastEditTime: 2020-06-19 00:09:44
  */ 
 import React from 'react'
 import {
-  BrowserRouter as Router,
-  Switch,
-  // useLocation,
   withRouter
 } from "react-router-dom"
+import { Pagination } from 'antd'
 const Dashboard = () => {
   // let location = useLocation();
   // console.log(location)
   return (
-    <h1>仪表盘123</h1>
+    <div>
+      <h1>仪表盘123</h1>
+      <Pagination defaultCurrent={1} total={50} showSizeChanger />
+    </div>
   )
 }
 
