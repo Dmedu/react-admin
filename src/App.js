@@ -7,38 +7,32 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-18 23:47:07
+ * @LastEditTime: 2020-06-19 20:41:35
  */
 import React from 'react'
 import { ConfigProvider } from 'antd'
-
-// 设置语言
-import { setLocale } from './Internationalization'
-import './App.less'
-
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import Store from './store'
+import { getLocale } from './Internationalization'
 import Layout from './routes/index'
 
-import Test from './Test'
-
-//test
-// const App = () => {
-//   return (
-//     <div className="App">
-//       <Test/>
-//     </div>
-//   )
-// }
+import './App.less'
 
 const App = () => {
-
+  const locale = getLocale()
   return (
-    <div className="App">
-      <ConfigProvider locale={setLocale('zh-cn')}>
-        <Layout />
-      </ConfigProvider>
-    </div>
+    <ConfigProvider locale={locale}>
+      <BrowserRouter>
+        <Provider store={Store}>
+          <div className="App">
+            <Layout />
+          </div>
+        </Provider>
+      </BrowserRouter>
+    </ConfigProvider>
   )
-  
+
 }
 
 export default App

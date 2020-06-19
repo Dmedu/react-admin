@@ -7,40 +7,99 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:19:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-18 21:34:54
+ * @LastEditTime: 2020-06-19 20:44:09
  */
 
 import React from 'react'
-import { Layout,Select } from 'antd'
+import { 
+  Layout,
+  Avatar
+} from 'antd'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import { 
+  withRouter,
+  useRouteMatch
+} from 'react-router-dom'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   QuestionCircleOutlined,
-  NotificationOutlined
+  NotificationOutlined,
+  UserOutlined,
+  SettingOutlined,
+  PoweroffOutlined,
 } from '@ant-design/icons'
 import Dropdown from './Dropdown'
 import {
   setXs,
   setLg
 } from '../../../../store/action/Responsive'
+import Link from '../../../../components/Link'
+import { signOut } from '../../../../store/action/login'
 
 import './Header.less'
 
 const { Header } = Layout
 
+const PersonalDropdownTextComponent = () => (
+  <div className="option personal">
+    <Avatar
+      shape="square"
+      size="small"
+      icon={<UserOutlined />}
+    />
+    <span className="antd-pro-components-global-header-index-name username">Serati Ma</span>
+  </div>
+)
+const personalData = {
+  childrenComponent: <PersonalDropdownTextComponent />,
+  menus: {
+    menuItem: [
+      {
+        key: 'personal-center',
+        title: '个人中心',
+        icon: UserOutlined
+      },
+      {
+        key: 'personal-settings',
+        title: '个人设置',
+        icon: SettingOutlined
+      },
+      {
+        key: 'sign-out',
+        title: '退出登录',
+        icon: PoweroffOutlined,
+        menuItemComponent: <span className="antd-pro-components-global-header-index-name username">退出登录</span>
+      }
+    ]
+  }
+}
+
 const ContentHeader = ({
   responsiveLayout,
   dispatch,
-  personalData,
-  personalOnPress,
-  selectLangData,
-  selectLangOnPress
+  history,
+  match
 }) => {
 
   const { collapsed } = responsiveLayout.sidebar
-  const { options,defaultValue } = selectLangData
+  const { path } = match
+  
+  const clickPersonalCenter = (e) => {
+    switch(e.key){
+      case 'sign-out':
+        dispatch(signOut())
+        history.replace('/user/login')
+        break;
+      case 'personal-center':
+        history.push(`${path}/personal-center`)
+        break;
+      case 'personal-settings':
+        history.push(`${path}/personal-settings`)
+        break;
+    }
+  }
+  
   return (
     <Header style={{ padding: 0 }}>
       <div className="header-box">
@@ -55,11 +114,7 @@ const ContentHeader = ({
           <NotificationOutlined className="option" />
           <Dropdown
             data={personalData}
-            onPress={(e) => personalOnPress(e)}
-          />
-          <Dropdown
-            data={selectLangData}
-            onPress={(e) => selectLangOnPress(e)}
+            onPress={clickPersonalCenter}
           />
         </div>
       </div>
@@ -67,23 +122,6 @@ const ContentHeader = ({
   )
 }
 
-ContentHeader.propTypes = {
-  /**头部个人中心下拉 */
-  personalDropdownData: PropTypes.object,
-  /**
-   * dropdown menuItem的点击回调
-   * ({ item, key, keyPath, domEvent }) => {}
-   */
-  dropdownOnPress: PropTypes.func,
-  /**国际化select */
-  selectLangData: PropTypes.object,
-  /**
-   * 选中 option，或 input 的 value 变化时，调用此函数
-   * (value, option:Option/Array<Option>) = {}
-   */
-  selectLangOnPress: PropTypes.func
-}
-
 export default connect(({ responsiveLayout }) => ({
   responsiveLayout
-}))(ContentHeader)
+}))(withRouter(ContentHeader))

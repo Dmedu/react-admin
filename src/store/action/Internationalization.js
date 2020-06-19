@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-04 17:13:30
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-18 22:47:11
+ * @LastEditTime: 2020-06-19 15:19:44
  */ 
 import {
   SET_LOCALE
