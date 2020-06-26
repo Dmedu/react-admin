@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:27:39
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 14:57:55
+ * @LastEditTime: 2020-06-25 15:50:22
  */
 import React from 'react'
 // 用户布局
@@ -62,10 +62,17 @@ export default {
         },
         {
           title: '工作台',
-          path: '/dashboard/workbench',
+          exact: true,
+          path: '/',
           component: C
         }
       ]
+    },
+    {
+      title: 'nav 1',
+      icon: MenuUnfoldOutlined,
+      path: '/nav1',
+      component: () => <h1>nav 1</h1>
     },
     {
       title: '列表',
@@ -100,13 +107,6 @@ export default {
           ]
         }
       ]
-    },
-    {
-      title: 'nav 1',
-      icon: MenuUnfoldOutlined,
-      exact: true,
-      path: '/',
-      component: () => <h1>nav 1</h1>
     },
     {
       title: 'nav 2333',

@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 11:54:20
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 14:57:01
+ * @LastEditTime: 2020-06-25 15:39:22
  */
 import React from 'react'
 import {
@@ -30,6 +30,7 @@ const Layout = () => {
       <Route path='/user/login' render={() => (<UserLayout />)} />
       <Route path='/404' render={() => (<Not />)} />
       <Route path='/basicLayout' render={() => (<BasicLayout routers={routeConfig} />)} />
+      <Route render={() => (<Not />)} />
     </Switch>
   )
 

@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-10 17:16:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-19 16:01:58
+ * @LastEditTime: 2020-06-25 15:30:22
  */
 import React from 'react'
 import { Layout } from 'antd'
@@ -25,7 +25,7 @@ const BasicLayout = ({ routers }) => {
   const allRouter = menus.concat(otherRouter)
   
   return (
-    // <Security>
+    <Security>
       <Layout style={{ height: '100%' }}>
         <Sidebar routers={menus} />
         <Layout>
@@ -34,7 +34,7 @@ const BasicLayout = ({ routers }) => {
           <Footer />
         </Layout>
       </Layout>
-    // </Security>
+    </Security>
   )
 }
 
