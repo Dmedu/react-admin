@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:19:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-24 17:37:13
+ * @LastEditTime: 2020-07-04 17:53:19
  */
 
 import React from 'react'
@@ -34,6 +34,7 @@ import {
   setXs,
   setLg
 } from '../../../../store/action/Responsive'
+import user from '../../../../utils/user'
 import Link from '../../../../components/Link'
 import { signOut } from '../../../../store/action/login'
 
@@ -88,7 +89,7 @@ const ContentHeader = ({
   const clickPersonalCenter = (e) => {
     switch(e.key){
       case 'sign-out':
-        dispatch(signOut())
+        user.delete()
         history.replace('/user/login')
         break;
       case 'personal-center':

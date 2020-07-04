@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 13:59:43
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 19:13:15
+ * @LastEditTime: 2020-07-04 18:10:48
  */
 import { SET_USER_INFO, SIGN_OUT } from '../action/actionType/login'
 
@@ -17,6 +17,7 @@ const defaultState = {
 }
 
 const setUserInfo = (state = defaultState, action) => {
+  console.log(action)
   switch (action.type) {
     case SET_USER_INFO:
       return {

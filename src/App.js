@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-19 20:41:35
+ * @LastEditTime: 2020-07-04 17:46:28
  */
 import React from 'react'
 import { ConfigProvider } from 'antd'
@@ -21,6 +21,7 @@ import './App.less'
 
 const App = () => {
   const locale = getLocale()
+  console.log(Store)
   return (
     <ConfigProvider locale={locale}>
       <BrowserRouter>

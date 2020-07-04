@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 17:17:29import React from 'react'
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 19:04:41
+ * @LastEditTime: 2020-07-04 18:32:06
  */
 import React from 'react'
 import {
@@ -23,16 +23,14 @@ import {
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setUserInfo } from '../../../store/action/login'
+import user from '../../../utils/user'
 
 import './login.less'
 
-const Login = ({ dispatch,history  }) => {
-  // let location = useLocation();
-  // console.log(location)
+const Login = ({ dispatch, history }) => {
   const onFinish = (values) => {
-    console.log('登录点击')
-    console.log(history)
-    dispatch(setUserInfo({user_id:1,currentAuthority:['admin']}))
+    let userInfo = { user_id: 1 }
+    user.save(userInfo,['admin'])
     history.replace('/')
   }
   return (

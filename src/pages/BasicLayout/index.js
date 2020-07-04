@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-10 17:16:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-25 15:30:22
+ * @LastEditTime: 2020-07-04 15:23:08
  */
 import React from 'react'
 import { Layout } from 'antd'
@@ -23,7 +23,7 @@ const BasicLayout = ({ routers }) => {
 
   const { menus, otherRouter } = routers
   const allRouter = menus.concat(otherRouter)
-  
+
   return (
     <Security>
       <Layout style={{ height: '100%' }}>
