@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 17:17:29import React from 'react'
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-04 18:32:06
+ * @LastEditTime: 2020-07-10 15:30:27
  */
 import React from 'react'
 import {
@@ -22,10 +22,10 @@ import {
 } from '@ant-design/icons'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { setUserInfo } from '../../../store/action/login'
-import user from '../../../utils/user'
+import { setUserInfo } from '@/store/action/login'
+import user from '@/utils/user'
 
-import './login.less'
+import styles from './login.module.less'
 
 const Login = ({ dispatch, history }) => {
   const onFinish = (values) => {
@@ -34,12 +34,12 @@ const Login = ({ dispatch, history }) => {
     history.replace('/')
   }
   return (
-    <div className="login">
-      <div className="user-login-components">
+    <div className={styles.login}>
+      <div className={styles.userLoginComponents}>
         <h1>react admin</h1>
         <Form
           name="normal_login"
-          className='login-form'
+          className={styles.loginForm}
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
@@ -47,14 +47,14 @@ const Login = ({ dispatch, history }) => {
             name="username"
             rules={[{ required: true, message: 'Please input your Username!' }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+            <Input prefix={<UserOutlined />} placeholder="Username" />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[{ required: true, message: 'Please input your Password!' }]}
           >
             <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              prefix={<LockOutlined />}
               type="password"
               placeholder="Password"
             />
@@ -64,13 +64,13 @@ const Login = ({ dispatch, history }) => {
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
-            <a className="login-form-forgot" href="">
+            <a className={styles.loginFormForgot} href="">
               Forgot password
         </a>
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button type="primary" htmlType="submit" className={styles.loginFormButton}>
               Log in
         </Button>
         Or <a href="">register now!</a>

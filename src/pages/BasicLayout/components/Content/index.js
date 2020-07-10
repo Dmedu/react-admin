@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:26:53
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-17 19:43:42
+ * @LastEditTime: 2020-07-10 15:26:08
  */
 import React from 'react'
 import { Layout } from 'antd'
@@ -17,9 +17,9 @@ import {
   withRouter
 } from 'react-router-dom'
 import { connect } from 'react-redux'
-import AuthorizedRoute from '../../../../components/Authorized/AuthorizedRoute'
+import AuthorizedRoute from '@/components/Authorized/AuthorizedRoute'
 
-import './Content.less'
+import styles from './Content.module.less'
 
 const { Content } = Layout
 
@@ -59,7 +59,7 @@ class BasicContent extends React.Component {
     const { routers } = this.props
 
     return (
-      <Content className="content-layout-background">
+      <Content className={styles.contentLayoutBackground}>
         <Switch>
           {this.renderRoute(routers)}
         </Switch>

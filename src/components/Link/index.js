@@ -7,17 +7,17 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-18 21:42:29
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-18 22:13:53
+ * @LastEditTime: 2020-07-10 14:44:06
  */ 
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import './Link.less'
-
+import styles from './Link.module.less'
+// 'antd-pro-components-global-header-index-name link'
 const RenderLink = ({ title, to, ...rest }) => {
   return (
     <Link
-      className='antd-pro-components-global-header-index-name link'
+      className={styles.link}
       to={to}
       {...rest}
     >

@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-10 17:16:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-04 15:23:08
+ * @LastEditTime: 2020-07-10 15:02:18
  */
 import React from 'react'
 import { Layout } from 'antd'
@@ -17,7 +17,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import Security from '../../components/Security'
 
-import './index.less'
+import styles from './index.module.less'
 
 const BasicLayout = ({ routers }) => {
 
@@ -26,7 +26,7 @@ const BasicLayout = ({ routers }) => {
 
   return (
     <Security>
-      <Layout style={{ height: '100%' }}>
+      <Layout className={styles.wrapper}>
         <Sidebar routers={menus} />
         <Layout>
           <Header />

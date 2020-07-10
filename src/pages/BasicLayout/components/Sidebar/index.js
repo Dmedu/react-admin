@@ -7,16 +7,16 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:08:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-18 21:49:24
+ * @LastEditTime: 2020-07-10 15:28:12
  */
 import React from 'react'
 import { Layout, Menu } from 'antd'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import Link from '../../../../components/Link'
+import Link from '@/components/Link'
 import { connect } from 'react-redux'
 
-import './Sidebar.less'
+import styles from './Sidebar.module.less'
 
 const { SubMenu } = Menu
 
@@ -97,7 +97,7 @@ class Sidebar extends React.PureComponent {
         collapsed={collapsed}
         width={256}
       >
-        <div className="logo" />
+        <div className={styles.logo} />
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}

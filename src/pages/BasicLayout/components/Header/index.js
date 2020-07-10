@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:19:16
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-04 17:53:19
+ * @LastEditTime: 2020-07-10 14:58:06
  */
 
 import React from 'react'
@@ -29,6 +29,7 @@ import {
   SettingOutlined,
   PoweroffOutlined,
 } from '@ant-design/icons'
+import cls from 'classnames'
 import Dropdown from './Dropdown'
 import {
   setXs,
@@ -38,18 +39,18 @@ import user from '../../../../utils/user'
 import Link from '../../../../components/Link'
 import { signOut } from '../../../../store/action/login'
 
-import './Header.less'
+import styles from './Header.module.less'
 
 const { Header } = Layout
 
 const PersonalDropdownTextComponent = () => (
-  <div className="option personal">
+  <div className={cls(styles.option,styles.personal)}>
     <Avatar
       shape="square"
       size="small"
       icon={<UserOutlined />}
     />
-    <span className="antd-pro-components-global-header-index-name username">Serati Ma</span>
+    <span className={styles.username}>Serati Ma</span>
   </div>
 )
 const personalData = {
@@ -70,7 +71,7 @@ const personalData = {
         key: 'sign-out',
         title: '退出登录',
         icon: PoweroffOutlined,
-        menuItemComponent: <span className="antd-pro-components-global-header-index-name username">退出登录</span>
+        menuItemComponent: <span className={styles.username}>退出登录</span>
       }
     ]
   }
@@ -103,16 +104,16 @@ const ContentHeader = ({
   
   return (
     <Header style={{ padding: 0 }}>
-      <div className="header-box">
-        <span className="left-icon">
+      <div className={styles.headerBox}>
+        <span className={styles.leftIcon}>
           {
-            collapsed ? <MenuFoldOutlined className="icon" onClick={() => dispatch(setLg())} /> :
-              <MenuUnfoldOutlined className="icon" onClick={() => dispatch(setXs())} />
+            collapsed ? <MenuFoldOutlined className={styles.icon} onClick={() => dispatch(setLg())} /> :
+              <MenuUnfoldOutlined className={styles.icon} onClick={() => dispatch(setXs())} />
           }
         </span>
-        <div className="right-option-box">
-          <QuestionCircleOutlined className="option" />
-          <NotificationOutlined className="option" />
+        <div className={styles.rightOptionBox}>
+          <QuestionCircleOutlined className={styles.option} />
+          <NotificationOutlined className={styles.option} />
           <Dropdown
             data={personalData}
             onPress={clickPersonalCenter}

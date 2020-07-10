@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-03 16:43:15
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-04 17:46:28
+ * @LastEditTime: 2020-07-10 15:20:38
  */
 import React from 'react'
 import { ConfigProvider } from 'antd'
@@ -17,7 +17,7 @@ import Store from './store'
 import { getLocale } from './Internationalization'
 import Layout from './routes/index'
 
-import './App.less'
+import'./App.less'
 
 const App = () => {
   const locale = getLocale()
@@ -26,7 +26,7 @@ const App = () => {
     <ConfigProvider locale={locale}>
       <BrowserRouter>
         <Provider store={Store}>
-          <div className="App">
+          <div className='App'>
             <Layout />
           </div>
         </Provider>

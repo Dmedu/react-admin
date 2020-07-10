@@ -7,10 +7,10 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-07-04 16:38:01
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-04 18:28:09
+ * @LastEditTime: 2020-07-10 15:31:30
  */
-import { setUserInfo, signOut } from '../store/action/login'
-import Store from '../store'
+import { setUserInfo, signOut } from '@/store/action/login'
+import Store from '@/store'
 
 const user = {
   // 更新-保存

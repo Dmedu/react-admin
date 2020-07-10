@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-11 11:54:20
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-25 15:39:22
+ * @LastEditTime: 2020-07-10 15:31:08
  */
 import React from 'react'
 import {
@@ -16,9 +16,9 @@ import {
   Redirect
 } from 'react-router-dom'
 
-import BasicLayout from '../pages/BasicLayout'
-import UserLayout from '../pages/UserLayout/Login'
-import Not from '../pages/404'
+import BasicLayout from '@/pages/BasicLayout'
+import UserLayout from '@/pages/UserLayout/Login'
+import Not from '@/pages/404'
 
 import routeConfig from './router.config'
 
