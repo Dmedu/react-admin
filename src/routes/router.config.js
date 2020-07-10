@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 路由配置
+ * @Descripttion: 基本布局理由配置
  * @version: v1.0.0
  * @Author: Ethan Zhang
  * @Email: 610558983@qq.com
@@ -7,14 +7,12 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:27:39
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-26 18:04:18
+ * @LastEditTime: 2020-07-08 16:22:14
  */
 import React from 'react'
-// 用户布局
-import UserLayout from '../pages/UserLayout/Login'
 
-//基本布局
-import BasicLayout from '../pages/BasicLayout'
+//工作台
+import Workbench from '../pages/BasicLayout/Workbench'
 //仪表盘
 import Dashboard from '../pages/BasicLayout/Dashboard'
 //列表
@@ -50,6 +48,12 @@ export default {
       icon: UserOutlined,
       sub: [
         {
+          title: '工作台',
+          exact: true,
+          path: '/',
+          component: Workbench
+        },
+        {
           title: '分析',
           path: '/dashboard/analysis',
           icon: UploadOutlined,
@@ -59,12 +63,6 @@ export default {
           title: '监控',
           path: '/dashboard/monitor',
           component: B
-        },
-        {
-          title: '工作台',
-          exact: true,
-          path: '/',
-          component: C
         }
       ]
     },
