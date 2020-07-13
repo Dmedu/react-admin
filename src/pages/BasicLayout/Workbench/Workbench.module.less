@@ -1,10 +1,80 @@
-@color:cyan;
+@import '../../../theme/index.less';
+
 .cardBox {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  .item{
-    background-color: @color;
+
+  .card {
+    width: 25%;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    .item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &>p {
+        margin: 0px;
+      }
+
+      .icon {
+        color: @text-color;
+        font-size: 15px;
+      }
+    }
+
+    .content {
+      height: 46px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid @border-color-base;
+      line-height: 46px;
+    }
+
+    .title {
+      font-size: 30px;
+      color: @heading-color;
+    }
+
+    .trend {
+      display: flex;
+      flex-direction: row;
+
+      .trendItem {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .icon {
+          font-size: 8px;
+        }
+
+        .downOut {
+          color: @warning-color;
+        }
+
+        .upOut {
+          color: @success-color;
+        }
+
+        .trendFont {
+          font-size: 14px;
+          color: @text-color-secondary;
+          margin-right: 8px;
+
+          .num {
+            margin-left: 4px;
+            font-size: 14px;
+          }
+        }
+
+        &:nth-of-type(1) {
+          margin-right: 16px;
+        }
+      }
+    }
   }
 }
