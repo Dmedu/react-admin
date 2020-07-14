@@ -7,11 +7,12 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-07-12 20:15:26
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-13 20:04:01
+ * @LastEditTime: 2020-07-14 11:56:10
  */
 import axios from "axios"
 import { message } from 'antd'
 import Config from './config'
+import { getLocale } from '@/Internationalization'
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -73,7 +74,7 @@ class Request {
           message: errMsg
         } = error
         if (response.status >= 500) {
-          message.error('服务器开了点小差, 请稍候再试一下.')
+          message.error(getLocale('Http.codeMessage.error'))
         }
         message.error(errMsg)
         return Promise.reject({

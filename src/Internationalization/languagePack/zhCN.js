@@ -15,6 +15,7 @@ const otherZhCNPack = {
   'workbench.card.tip':'说明',
   'workbench.card.trend.Week':'周同比',
   'workbench.card.trend.day':'日同比',
+  'Http.codeMessage.error':'服务器开了点小差, 请稍候再试一下.'
   
 }
 export default otherZhCNPack
