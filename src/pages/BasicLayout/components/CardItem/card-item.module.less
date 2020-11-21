@@ -1,0 +1,31 @@
+@import '../../../../theme/index.less';
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &>p {
+    margin: 0px;
+  }
+
+  .icon {
+    color: @text-color;
+    font-size: 15px;
+  }
+}
+
+.topCom {
+  height: 46px;
+  border-bottom: 1px solid @border-color-base;
+  line-height: 46px;
+}
+
+.bottomCom {
+  padding-top: 9px;
+}
+
+.title {
+  font-size: 30px;
+  color: @heading-color;
+}

@@ -145,5 +145,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.5"
   }
 }
