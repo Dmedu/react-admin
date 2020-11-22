@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-12 21:47:02
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-06-19 15:13:11
+ * @LastEditTime: 2020-11-22 11:43:39
  */ 
 import React from 'react'
 import {
@@ -16,9 +16,6 @@ import {
 import { connect } from 'react-redux'
 import { Pagination } from 'antd'
 const Dashboard = ({ localeState }) => {
-  // let location = useLocation();
-  // console.log(location)
-  console.log('Dashboard - >',localeState)
   return (
     <div>
       <h1>仪表盘123</h1>

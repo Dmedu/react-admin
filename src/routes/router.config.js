@@ -7,17 +7,11 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-06-07 16:27:39
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-07-08 16:22:14
+ * @LastEditTime: 2020-11-22 14:20:56
  */
 import React from 'react'
-
-//工作台
-import Workbench from '../pages/BasicLayout/Workbench'
 //仪表盘
 import Dashboard from '../pages/BasicLayout/Dashboard'
-//列表
-import List from '../pages/BasicLayout/List'
-
 
 // 404
 import NoFoundPage from '../pages/404'
@@ -44,73 +38,35 @@ const H = () => <h1>H</h1>
 export default {
   menus: [
     {
-      title: '仪表盘',
+      title: '导航1',
+      icon: MenuUnfoldOutlined,
+      path: '/',
+      component: () => <h1>导航1</h1>
+    },
+    {
+      title: '导航2',
       icon: UserOutlined,
       sub: [
         {
-          title: '工作台',
+          title: '一级菜单',
           exact: true,
-          path: '/',
-          component: Workbench
-        },
-        {
-          title: '分析',
-          path: '/dashboard/analysis',
+          path: '/nav2/menu1',
           icon: UploadOutlined,
-          component: Dashboard
+          component:<h1>一级菜单</h1>
         },
         {
-          title: '监控',
-          path: '/dashboard/monitor',
-          component: B
-        }
-      ]
-    },
-    {
-      title: 'nav 1',
-      icon: MenuUnfoldOutlined,
-      path: '/nav1',
-      component: () => <h1>nav 1</h1>
-    },
-    {
-      title: '列表',
-      icon: VideoCameraOutlined,
-      sub: [
-        {
-          title: '查询列表',
-          path: '/list/query',
-          component: List
-        },
-        {
-          title: '搜索列表',
+          title: '二级菜单',
           icon: MenuFoldOutlined,
           sub: [
             {
-              title: '文章',
-              path: '/list/post',
+              title: '三级菜单',
+              path: '/nav2/menu3',
               authority: ['user'],
-              component: E
-            },
-            {
-              title: '项目',
-              path: '/list/project',
-              authority: ['user'],
-              component: F
-            },
-            {
-              title: '应用',
-              path: '/list/app',
-              component: G
+              component: <h1>三级菜单</h1>
             }
           ]
         }
       ]
-    },
-    {
-      title: 'nav 2333',
-      icon: MenuUnfoldOutlined,
-      path: '/gg',
-      component: () => <h1>nav 2333</h1>
     }
   ],
   otherRouter: [
