@@ -7,7 +7,7 @@
  * @GitHub: https://github.com/Dmedu
  * @Date: 2020-07-08 16:19:28
  * @LastEditors: Ethan Zhang
- * @LastEditTime: 2020-11-22 11:03:31
+ * @LastEditTime: 2020-11-22 14:27:28
  */
 
 import React from 'react'
@@ -32,7 +32,7 @@ class Workbench extends React.Component {
     console.log('styles->', styles)
     return (
       <div>
-        <CardBox />
+        {/* <CardBox />
         <TabsLarge />
         <Select
           defaultValue={'四川'}
@@ -47,7 +47,7 @@ class Workbench extends React.Component {
               value:'上海'
             }
           ]}
-        />
+        /> */}
       </div>
     )
   }
